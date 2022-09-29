@@ -86,7 +86,7 @@ public class BoletaPago {
         return trabajadoresText;
     }
     public static void resumenDeDatos(String[] nombres, String[] trabajadorText, int[] horasPorTrabajador, double[] tarifaPorTrabajador, String mesText){
-        System.out.println("******RESUMEN DE DATOS INGRSADOS*****");
+        System.out.println("\n******RESUMEN DE DATOS INGRSADOS*****");
         System.out.println("Nombres de Empleados: "+ Arrays.toString(nombres));
         System.out.println("El tipo de empleado es: "+ Arrays.toString(trabajadorText));
         System.out.println("Horas trabajadas por trabajador: "+ Arrays.toString(horasPorTrabajador));
@@ -121,7 +121,7 @@ public class BoletaPago {
 
         int numEmpleados;
 
-        System.out.println("Ingrese la cantidad de empleados: ");
+        System.out.print("Ingrese la cantidad de empleados: ");
         numEmpleados= imput.nextInt();
         imput.nextLine();
 
@@ -130,14 +130,14 @@ public class BoletaPago {
         double [] tarifaPorTrabajador = new double[numEmpleados];
         String [] nombres= new String[numEmpleados];
 
-        System.out.println("Ingrese los datos de los "+numEmpleados+" empleados:");
+        System.out.print("\nIngrese los datos de los "+numEmpleados+" empleados:\n");
 
         for (int i=0; i<numEmpleados;i++){
             System.out.println("\nDatos del empleado N° "+(i+1)+" :");
-            System.out.println("Ingrese el nombre del empleado: ");
+            System.out.print("Ingrese el nombre del empleado: ");
             nombre = imput.nextLine();
             nombres[i] = nombre;
-            System.out.println("Ingrese el tipo de trabajador (O = Obrero , T =Tecnico, A = Administrativo");
+            System.out.print("Ingrese el tipo de trabajador (O = Obrero , T =Tecnico, A = Administrativo): ");
             tipoTrabajador = imput.nextLine().toUpperCase();
 
             while (!tipoTrabajador.equals("O") && !tipoTrabajador.equals("T") && !tipoTrabajador.equals("A")) {
@@ -146,7 +146,7 @@ public class BoletaPago {
             }
             tipoTrabajdorCaracter[i]=tipoTrabajador;
 
-            System.out.println("Ingrese las horas trabajadas:");
+            System.out.print("Ingrese las horas trabajadas:");
             horasTrabajadas = imput.nextInt();
             imput.nextLine();
 
@@ -158,7 +158,7 @@ public class BoletaPago {
 
             horasPorTrabajador[i]=horasTrabajadas;
 
-            System.out.println("Ingrese la Tarifa por hora:");
+            System.out.print("Ingrese la Tarifa por hora:");
             tarifaHora = imput.nextDouble();
             imput.nextLine();
             while (tarifaHora <= 0) {
@@ -168,7 +168,7 @@ public class BoletaPago {
             }
             tarifaPorTrabajador[i]=tarifaHora;
         }
-        System.out.println("Ingrese el numero del mes (1-12)");
+        System.out.print("\nIngrese el numero del mes (1-12): ");
         mes = imput.nextInt();
         imput.nextLine();
         String mesText=mesText(mes);
@@ -181,9 +181,9 @@ public class BoletaPago {
         resumenDeDatos(nombres, trabajadorText, horasPorTrabajador, tarifaPorTrabajador, mesText);
         resumenMontos(salarioBase, descuentoSunat, salarioNeto);
 
-        System.out.println("\nPARA IMPRIMIR PRESIONE DIGITE \"P\" - PARA SALIR \"E\"");
+        System.out.println("\nPARA IMPRIMIR DIGITE \"P\" - PARA SALIR \"E\"");
         String imprimir = imput.nextLine();
-        if (imprimir.equals("P")){
+        if (imprimir.equalsIgnoreCase("P")){
             System.out.println("*****************************************************************");
             for (int i=0; i<numEmpleados; i++){
                 System.out.println("===BOLETA CORRESPONDIENTE AL MES DE "+mesText+"===");
